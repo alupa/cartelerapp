@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:peliculas/src/models/actores_model.dart';
@@ -7,7 +8,7 @@ import 'package:peliculas/src/models/pelicula_model.dart';
 
 class PeliculasProvider {
 
-  String _apikey = '61cf284133b54f22bf55108d3fe002e5';
+  String _apikey = DotEnv().env['API_KEY_THEMOVIEDB'];
   String _url = 'api.themoviedb.org';
   String _language = 'es-ES';
 
