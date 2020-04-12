@@ -1,4 +1,4 @@
-package com.example.peliculas
+package cl.alupa.peliculas
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
