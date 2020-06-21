@@ -1,16 +1,24 @@
-# peliculas
+# Cartelerapp
 
-A new Flutter project.
+Discover movies in theaters today, popular movies and search for your favorite movie basic info.
 
-## Getting Started
+## Install :point_down:
 
-This project is a starting point for a Flutter application.
+Coming soon links here...
 
-A few resources to get you started if this is your first Flutter project:
+## Developer just like me? :mage_man:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+1. Clone this repo
+2. Go to project dir
+3. Run `flutter packages get` command
+4. Copy .env.example file to .env
+5. Edit .env and paste your API key from TheMovieDb, if you don't have an account just [sign up](https://www.themoviedb.org/account/signup) (it's free)
+5. Play'n share your magic! :man_technologist:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License :memo:
+
+The MIT License (MIT)
+
+## Credits :pray:
+
+Fernando Herrera ([@Klerith](https://github.com/Klerith))
