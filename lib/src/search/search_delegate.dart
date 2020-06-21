@@ -6,25 +6,8 @@ class DataSearch extends SearchDelegate {
 
   String seleccion = '';
   final peliculasProvider = new PeliculasProvider();
-  
-  final peliculas = [
-    'Spiderman',
-    'Aquaman',
-    'Batman',
-    'Shazam!',
-    'Ironman',
-    'Capitán America',
-    'Superman',
-    'Ironman 2',
-    'Ironman 3',
-    'Ironman 4',
-    'Ironman 5',
-  ];
-
-  final peliculasRecientes = [
-    'Spiderman',
-    'Capitan America'
-  ];
+  @override
+  String get searchFieldLabel => 'Buscar';
   
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -100,25 +83,5 @@ class DataSearch extends SearchDelegate {
       },
     );
   }
-
-  // @override
-  // Widget buildSuggestions(BuildContext context) {
-  //   // Son las sugerencia que aparecen cuando la persona escribe
-  //   final listaSugerida = (query.isEmpty) ? peliculasRecientes : peliculas.where((p) => p.toLowerCase().startsWith(query.toLowerCase())).toList();
-    
-  //   return ListView.builder(
-  //     itemCount: listaSugerida.length,
-  //     itemBuilder: (context, i){
-  //       return ListTile(
-  //         leading: Icon(Icons.movie),
-  //         title: Text(listaSugerida[i]),
-  //         onTap: (){
-  //           seleccion = listaSugerida[i];
-  //           showResults(context);
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
 
 }

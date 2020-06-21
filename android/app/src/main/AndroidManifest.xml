@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cl.alupa.peliculas">
+    package="com.github.alupa.cartelerapp">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
@@ -9,7 +9,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Películas"
+        android:label="Cartelerapp"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
