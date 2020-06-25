@@ -4,7 +4,7 @@ Discover movies in theaters today, popular movies and search for your favorite m
 
 ## Install :point_down:
 
-Coming soon links here...
+<a href="https://play.google.com/store/apps/details?id=com.github.alupa.cartelerapp"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="75"></a>
 
 ## Developer just like me? :mage_man:
 
