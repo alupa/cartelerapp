@@ -3,21 +3,18 @@ import 'package:peliculas/src/models/pelicula_model.dart';
 import 'package:peliculas/src/providers/peliculas_provider.dart';
 
 class DataSearch extends SearchDelegate {
-
   String seleccion = '';
   final peliculasProvider = new PeliculasProvider();
   @override
   String get searchFieldLabel => 'Buscar';
-  
+
   @override
   List<Widget> buildActions(BuildContext context) {
     // Las acciones de nuestro AppBar
     return [
       IconButton(
         icon: Icon(Icons.clear),
-        onPressed: (){
-          query = '';
-        },
+        onPressed: ()=> query = '',
       )
     ];
   }
@@ -30,7 +27,7 @@ class DataSearch extends SearchDelegate {
         icon: AnimatedIcons.menu_arrow,
         progress: transitionAnimation,
       ),
-      onPressed: (){
+      onPressed: () {
         close(context, null);
       },
     );
@@ -52,17 +49,18 @@ class DataSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     // Son las sugerencia que aparecen cuando la persona escribe
-    if(query.isEmpty) return Container();
+    if (query.isEmpty) return Container();
 
     return FutureBuilder(
       future: peliculasProvider.buscarPelicula(query),
       builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> snapshot) {
-        if(!snapshot.hasData) return Center(child: CircularProgressIndicator());
-        
+        if (!snapshot.hasData)
+          return Center(child: CircularProgressIndicator());
+
         final peliculas = snapshot.data;
-        
+
         return ListView(
-          children: peliculas.map((pelicula){
+          children: peliculas.map((pelicula) {
             return ListTile(
               leading: FadeInImage(
                 image: NetworkImage(pelicula.getPosterImg()),
@@ -72,7 +70,7 @@ class DataSearch extends SearchDelegate {
               ),
               title: Text(pelicula.title),
               subtitle: Text(pelicula.originalTitle),
-              onTap: (){
+              onTap: () {
                 close(context, null);
                 pelicula.uniqueId = '';
                 Navigator.pushNamed(context, 'detalle', arguments: pelicula);
@@ -83,5 +81,4 @@ class DataSearch extends SearchDelegate {
       },
     );
   }
-
 }

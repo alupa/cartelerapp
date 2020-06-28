@@ -10,22 +10,18 @@ class PeliculaDetalle extends StatelessWidget {
 
     return Scaffold(
       body: CustomScrollView(
-        slivers: <Widget>[
-          _crearAppbar(pelicula),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                SizedBox(height: 10.0),
-                _posterTitulo(context, pelicula),
-                _descripcion(pelicula),
-                _crearCasting(pelicula),
-
-              ]
-            ),
-          ),
-        ],
-      )
-    );
+      slivers: <Widget>[
+        _crearAppbar(pelicula),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            SizedBox(height: 10.0),
+            _posterTitulo(context, pelicula),
+            _descripcion(pelicula),
+            _crearCasting(pelicula),
+          ]),
+        ),
+      ],
+    ));
   }
 
   Widget _crearAppbar(Pelicula pelicula) {
@@ -40,7 +36,7 @@ class PeliculaDetalle extends StatelessWidget {
         title: Text(
           pelicula.title,
           style: TextStyle(color: Colors.white, fontSize: 16.0),
-          ),
+        ),
         background: FadeInImage(
           image: NetworkImage(pelicula.getBackgroundImg()),
           placeholder: AssetImage('assets/img/loading.gif'),
@@ -71,8 +67,12 @@ class PeliculaDetalle extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(pelicula.title, style: Theme.of(context).textTheme.title, overflow: TextOverflow.ellipsis),
-                Text(pelicula.originalTitle, style: Theme.of(context).textTheme.subhead, overflow: TextOverflow.ellipsis),
+                Text(pelicula.title,
+                    style: Theme.of(context).textTheme.title,
+                    overflow: TextOverflow.ellipsis),
+                Text(pelicula.originalTitle,
+                    style: Theme.of(context).textTheme.subhead,
+                    overflow: TextOverflow.ellipsis),
                 Row(
                   children: <Widget>[
                     Icon(Icons.star_border),
@@ -88,18 +88,18 @@ class PeliculaDetalle extends StatelessWidget {
   }
 
   Widget _descripcion(Pelicula pelicula) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-    child: Text(pelicula.overview, style: TextStyle(fontSize: 16)),
-  );
-}
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+      child: Text(pelicula.overview, style: TextStyle(fontSize: 16)),
+    );
+  }
 
   Widget _crearCasting(Pelicula pelicula) {
     final movieProvider = new PeliculasProvider();
     return FutureBuilder(
       future: movieProvider.getCast(pelicula.id.toString()),
       builder: (context, AsyncSnapshot<List> snapshot) {
-        if(snapshot.hasData) return _crearActoresPageView(snapshot.data);
+        if (snapshot.hasData) return _crearActoresPageView(snapshot.data);
         return Center(child: CircularProgressIndicator());
       },
     );
@@ -110,10 +110,7 @@ class PeliculaDetalle extends StatelessWidget {
       height: 200.0,
       child: PageView.builder(
         pageSnapping: false,
-        controller: PageController(
-          viewportFraction: 0.3,
-          initialPage: 1
-        ),
+        controller: PageController(viewportFraction: 0.3, initialPage: 1),
         itemCount: actores.length,
         itemBuilder: (context, i) => _actorTarjeta(actores[i]),
       ),
