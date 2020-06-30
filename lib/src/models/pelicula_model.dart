@@ -3,13 +3,12 @@ class Peliculas {
 
   Peliculas();
 
-  Peliculas.fromJsonList(List<dynamic> jsonList){
-    if(jsonList == null) return;
+  Peliculas.fromJsonList(List<dynamic> jsonList) {
+    if (jsonList == null) return;
     for (var item in jsonList) {
-
       final Pelicula pelicula = new Pelicula.fromJsonMap(item);
       items.add(pelicula);
-    } 
+    }
   }
 }
 
@@ -47,30 +46,32 @@ class Pelicula {
     this.releaseDate,
   });
 
-  Pelicula.fromJsonMap(Map<String, dynamic> json){
-    popularity       = json['popularity'] / 1;
-    voteCount        = json['vote_count'];
-    video            = json['video'];
-    posterPath       = json['poster_path'];
-    id               = json['id'];
-    adult            = json['adult'];
-    backdropPath     = json['backdrop_path'];
+  Pelicula.fromJsonMap(Map<String, dynamic> json) {
+    popularity = json['popularity'] / 1;
+    voteCount = json['vote_count'];
+    video = json['video'];
+    posterPath = json['poster_path'];
+    id = json['id'];
+    adult = json['adult'];
+    backdropPath = json['backdrop_path'];
     originalLanguage = json['original_language'];
-    originalTitle    = json['original_title'];
-    genreIds         = json['genre_ids'].cast<int>();
-    title            = json['title'];
-    voteAverage      = json['vote_average'] / 1;
-    overview         = json['overview'];
-    releaseDate      = json['release_date'];
+    originalTitle = json['original_title'];
+    genreIds = json['genre_ids'].cast<int>();
+    title = json['title'];
+    voteAverage = json['vote_average'] / 1;
+    overview = json['overview'];
+    releaseDate = json['release_date'];
   }
 
-  getPosterImg(){
-    if(posterPath == null) return 'https://www.nextlevelfairs.com/assets/images/image-not-available.png';
+  getPosterImg() {
+    if (posterPath == null)
+      return 'https://www.nextlevelfairs.com/assets/images/image-not-available.png';
     return 'https://image.tmdb.org/t/p/w500/$posterPath';
   }
 
-  getBackgroundImg(){
-    if(backdropPath == null) return 'https://www.nextlevelfairs.com/assets/images/image-not-available.png';
+  getBackgroundImg() {
+    if (backdropPath == null)
+      return 'https://www.nextlevelfairs.com/assets/images/image-not-available.png';
     return 'https://image.tmdb.org/t/p/w500/$backdropPath';
   }
 }

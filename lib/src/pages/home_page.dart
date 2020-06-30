@@ -12,14 +12,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text('Películas en cines', textScaleFactor: 1.0),
+        title: Text('Películas en cines'),
         backgroundColor: Colors.indigoAccent,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(context: context, delegate: DataSearch());
-            },
+            onPressed: () => showSearch(context: context, delegate: DataSearch()),
           ),
         ],
       ),
@@ -40,8 +38,7 @@ class HomePage extends StatelessWidget {
       future: peliculasProvider.getEnCines(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) return CardSwiper(peliculas: snapshot.data);
-        return Container(
-            child: Center(child: CircularProgressIndicator()));
+        return Container(child: Center(child: CircularProgressIndicator()));
       },
     );
   }
@@ -55,7 +52,8 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           Container(
               padding: EdgeInsets.only(left: 20.0),
-              child: Text('Populares', style: Theme.of(context).textTheme.subhead)),
+              child: Text('Populares',
+                  style: Theme.of(context).textTheme.subhead)),
           SizedBox(height: 5.0),
           StreamBuilder(
             stream: peliculasProvider.popularesStream,
